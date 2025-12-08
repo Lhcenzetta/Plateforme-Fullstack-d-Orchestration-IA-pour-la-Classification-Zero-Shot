@@ -1,11 +1,12 @@
 import os
-from google import genai
-from google.genai import types
+import google.generativeai as genai
+from google.generativeai import types
 from dotenv import load_dotenv
 import json
 load_dotenv()
 def traite_text(text, category):
-    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+    model = genai.GenerativeModel("gemini-2.5-flash")
 
     prompt = f"""
     You are an AI specialized in contextual summarization.
@@ -24,15 +25,12 @@ def traite_text(text, category):
     {text}
     """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-
-        config=types.GenerateContentConfig(
+    response = model.generate_content(
+        prompt,
+        generation_config=types.GenerationConfig(
             max_output_tokens=300,
             temperature=0.2,
             response_mime_type="application/json"   
-        ),
-
-        contents=prompt
+        )
     )
     return json.loads(response.text)

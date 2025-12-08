@@ -85,12 +85,10 @@ def sign_in(user:authschemas.UserRead , db : Session = Depends(get_db)):
     return {"access_token": access_token, "token_type": "bearer"}
 
 @router.post("/geminia")
-def analyser_test(content: authschemas.HistoryCreat, db: Session = Depends(get_db)):
+def analyser_test(content: authschemas.HistoryCreat, db: Session = Depends(get_db),dict = Depends(verify_token)):
 
-    # Call your analysis pipeline
     text, confidence, categorie, resume, tone = hybrid_analyse(content.text)
 
-    # Save into DB
     params = History(
         user_id=content.user_id,
         text=text,
