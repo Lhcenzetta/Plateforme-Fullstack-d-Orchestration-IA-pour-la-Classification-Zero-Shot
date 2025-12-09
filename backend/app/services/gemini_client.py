@@ -30,7 +30,7 @@ def traite_text(text, category):
         generation_config=types.GenerationConfig(
             max_output_tokens=300,
             temperature=0.2,
-            response_mime_type="application/json"   
+            response_mime_type="application/json"
         )
     )
     return json.loads(response.text)

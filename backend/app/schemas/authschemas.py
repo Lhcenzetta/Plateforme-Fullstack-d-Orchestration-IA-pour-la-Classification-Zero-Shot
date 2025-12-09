@@ -7,11 +7,9 @@ class UserCreat(BaseModel):
     fullname : str
     email : str
     passwordhash : str
-    createdat : datetime
 class UserRead(BaseModel):
     username : str
     passwordhash : str
-    
 class HistoryCreat(BaseModel):
     user_id: int
     text: str
