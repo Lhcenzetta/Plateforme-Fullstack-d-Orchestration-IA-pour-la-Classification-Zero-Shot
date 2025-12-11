@@ -6,9 +6,9 @@ export default function(){
     const [email , setEmail] = useState("")
     const [username , setUsername] = useState("")
     const [passwordhash , setpasswordhash] = useState("")
+    const route = useRouter();
 
     const submitform = async (e) => {
-        // const route = useRouter();
         e.preventDefault();
         console.log(fullname , email, username, passwordhash)
         const response = await fetch("http://127.0.0.1:8000/autho/signup",{
@@ -17,7 +17,7 @@ export default function(){
             body: JSON.stringify({username,fullname,email,passwordhash}),
         })
         console.log(response)
-        // route.push("/login");
+        route.push("/login");
     }
     return (
         <div className="min-h-screen w-full bg-gray-100 flex items-center justify-center px-4">

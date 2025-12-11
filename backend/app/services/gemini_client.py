@@ -3,7 +3,9 @@ import google.generativeai as genai
 from google.generativeai import types
 from dotenv import load_dotenv
 import json
+
 load_dotenv()
+
 def traite_text(text, category):
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
     model = genai.GenerativeModel("gemini-2.5-flash")
@@ -25,12 +27,33 @@ def traite_text(text, category):
     {text}
     """
 
-    response = model.generate_content(
-        prompt,
-        generation_config=types.GenerationConfig(
-            max_output_tokens=300,
-            temperature=0.2,
-            response_mime_type="application/json"
+    try:
+        response = model.generate_content(
+            prompt,
+            generation_config=types.GenerationConfig(
+                max_output_tokens=300,
+                temperature=0.2,
+                response_mime_type="application/json",
+                timeout=10  # <-- PROTECTS YOUR API
+            )
         )
-    )
-    return json.loads(response.text)
+
+        return json.loads(response.text)
+
+    except Exception as e:
+        error_msg = str(e)
+
+        # Check if FREE TIER QUOTA EXCEEDED
+        if "quota" in error_msg.lower():
+            return {
+                "summary": "Quota épuisé pour aujourd’hui.",
+                "tone": "neutral",
+                "category": category
+            }
+
+        # Any other error
+        return {
+            "summary": "Erreur interne lors de l'appel à Gemini.",
+            "tone": "neutral",
+            "category": category
+        }

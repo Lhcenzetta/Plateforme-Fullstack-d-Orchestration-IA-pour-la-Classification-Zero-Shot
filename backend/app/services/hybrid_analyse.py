@@ -12,10 +12,10 @@ def hybrid_analyse(text):
 
     resume = gemeina_output["summary"]
     tone = gemeina_output["tone"]
-    
+
     return text, confidence, categorie , resume , tone
 
-# text, confidence, categorie , resume , tone = hybrid_analyse("talk about math")
+# text, confidence, categorie , resume , tone = hybrid_analyse("i love pdf")
 # print(categorie)
 # print("\n")
 # print(resume)

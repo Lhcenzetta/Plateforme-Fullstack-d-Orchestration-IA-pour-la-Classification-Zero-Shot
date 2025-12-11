@@ -2,8 +2,8 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from db.base import get_db
 from services.hybrid_analyse import hybrid_analyse
 import os
-from jose import jwt , JWTError
-from fastapi import FastAPI, APIRouter, Depends, HTTPException,status
+from jose import jwt, JWTError
+from fastapi import FastAPI, APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from models.user import User, History
 from passlib.context import CryptContext
@@ -82,16 +82,16 @@ def sign_in(user:authschemas.UserRead , db : Session = Depends(get_db)):
     payload = {"username": user.username}
     access_token = create_access_token(payload)
 
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"access_token": access_token, "token_type": "bearer" ,"user_id" : user_check.id}
 
 @router.post("/geminia")
-def analyser_test(content: authschemas.HistoryCreat, db: Session = Depends(get_db),dict = Depends(verify_token)):
+def analyser_test(content: authschemas.HistoryCreat, db: Session = Depends(get_db), dict = Depends(verify_token)):
 
     text, confidence, categorie, resume, tone = hybrid_analyse(content.text)
 
     params = History(
-        user_id=content.user_id,
-        text=text,
+        user_id = content.user_id,
+        text= text,
         predict_categorie=categorie,
         confidence=confidence,
         resume=resume,
@@ -102,7 +102,14 @@ def analyser_test(content: authschemas.HistoryCreat, db: Session = Depends(get_d
     db.commit()
     db.refresh(params)
 
-    return {"status": "success", "history_id": params.id}
+    return {
+        "text": text,
+        "confidence": confidence,
+        "categorie": categorie,
+        "resume": resume,
+        "tone": tone,
+        "history_id": params.id
+    }
 
 
 @router.get("/get_db")
