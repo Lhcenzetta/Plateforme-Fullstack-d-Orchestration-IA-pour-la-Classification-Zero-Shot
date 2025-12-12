@@ -213,10 +213,10 @@ Le système classe automatiquement les textes dans 20 catégories :
 
 | Variable | Description | Obligatoire |
 |----------|-------------|-------------|
-| `DATABASE_URL` | URL de connexion PostgreSQL | ✅ |
-| `HF_TOKEN` | Token Hugging Face | ✅ |
-| `GEMINI_API_KEY` | Clé API Google Gemini | ✅ |
-| `SECRET_KEY` | Clé secrète JWT | ✅ |
+| `DATABASE_URL` | URL de connexion PostgreSQL |
+| `HF_TOKEN` | Token Hugging Face |
+| `GEMINI_API_KEY` | Clé API Google Gemini |
+| `SECRET_KEY` | Clé secrète JWT |
 
 ##  Tests
 
@@ -244,7 +244,7 @@ docker-compose -f infra/docker-compose.prod.yml up -d
 
 Assurez-vous de configurer les variables d'environnement pour la production avec des valeurs sécurisées.
 
-## 🤝 Contribution
+## Contribution
 
 1. Fork le projet
 2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
