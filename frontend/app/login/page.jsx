@@ -41,8 +41,6 @@ export default function LoginPage() {
         </p>
 
         <form onSubmit={submilogin} className="space-y-4">
-
-          {/* Username */}
           <div>
             <label className="block text-gray-600 text-sm mb-1">Username</label>
             <input
@@ -54,8 +52,6 @@ export default function LoginPage() {
               placeholder="Enter your username"
             />
           </div>
-
-          {/* Password */}
           <div>
             <label className="block text-gray-600 text-sm mb-1">Password</label>
             <input
@@ -67,8 +63,6 @@ export default function LoginPage() {
               placeholder="••••••••"
             />
           </div>
-
-          {/* Submit */}
           <button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold 
@@ -77,8 +71,6 @@ export default function LoginPage() {
             Login
           </button>
         </form>
-
-        {/* Register link */}
         <p className="text-center text-sm text-gray-600 mt-4">
           Don’t have an account?{" "}
           <button

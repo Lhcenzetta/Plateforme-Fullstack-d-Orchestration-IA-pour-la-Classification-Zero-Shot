@@ -34,7 +34,7 @@ def traite_text(text, category):
                 max_output_tokens=300,
                 temperature=0.2,
                 response_mime_type="application/json",
-                timeout=10  # <-- PROTECTS YOUR API
+                timeout=10
             )
         )
 
@@ -42,16 +42,12 @@ def traite_text(text, category):
 
     except Exception as e:
         error_msg = str(e)
-
-        # Check if FREE TIER QUOTA EXCEEDED
         if "quota" in error_msg.lower():
             return {
                 "summary": "Quota épuisé pour aujourd’hui.",
                 "tone": "neutral",
                 "category": category
             }
-
-        # Any other error
         return {
             "summary": "Erreur interne lors de l'appel à Gemini.",
             "tone": "neutral",

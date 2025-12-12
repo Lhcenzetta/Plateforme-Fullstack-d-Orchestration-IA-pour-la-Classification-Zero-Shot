@@ -49,8 +49,6 @@ export default function HybrideAnalyse() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 px-4 py-10 flex flex-col items-center">
-
-      {/* Header */}
       <div className="flex justify-between items-center w-full max-w-lg mb-6">
         <h1 className="text-3xl font-bold text-gray-800">
           Analyse Hybride
@@ -70,8 +68,6 @@ export default function HybrideAnalyse() {
       <p className="text-gray-600 text-center max-w-lg mb-6">
         Classification Zero-Shot + Résumé contextuel automatisé via Gemini.
       </p>
-
-      {/* Form */}
       <form
         onSubmit={submit_text}
         className="bg-white border border-gray-200 shadow-lg rounded-xl p-6 w-full max-w-lg space-y-4"
@@ -98,16 +94,12 @@ export default function HybrideAnalyse() {
           {loading ? "Analyse en cours..." : "Envoyer"}
         </button>
       </form>
-
-      {/* Error */}
       {error && (
         <div className="mt-6 bg-red-100 border border-red-200 text-red-800 p-4 rounded-lg w-full max-w-lg shadow">
           <h3 className="font-semibold">Erreur :</h3>
           <p className="text-sm">{error}</p>
         </div>
       )}
-
-      {/* Result */}
       {result && (
         <div className="mt-8 bg-white border border-gray-200 shadow-lg p-6 rounded-xl w-full max-w-lg">
           <h2 className="text-xl font-bold text-gray-900 mb-4">Résultats</h2>
