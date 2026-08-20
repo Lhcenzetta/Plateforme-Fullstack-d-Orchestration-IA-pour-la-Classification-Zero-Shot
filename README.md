@@ -49,7 +49,6 @@ Hybrid-Analyzer est une application fullstack conçue pour automatiser l'analyse
 - **TypeScript** - JavaScript typé
 - **Tailwind CSS** - Framework CSS utilitaire
 
-
 ## Installation et Configuration
 
 ### 1. Cloner le repository
