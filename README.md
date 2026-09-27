@@ -14,7 +14,6 @@ Hybrid-Analyzer est une application fullstack conçue pour automatiser l'analyse
 - **API REST** avec FastAPI
 
 ##  Architecture
-
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Frontend      │    │   Backend       │    │   Database      │
