@@ -3,9 +3,7 @@
 Hybrid-Analyzer est une application fullstack conçue pour automatiser l'analyse d'articles de veille grâce à l'orchestration de deux services d'IA complémentaires :
 - **Hugging Face (Zero-Shot Classification)** pour identifier la catégorie d'un texte sans entraînement préalable
 - **API Gemini** pour produire un résumé contextualisé et analyser la tonalité du contenu
-
 ## Fonctionnalités
-
 - **Authentification sécurisée** avec JWT
 - **Classification zero-shot** de textes en 20 catégories prédéfinies
 - **Résumé automatique** avec analyse de tonalité
